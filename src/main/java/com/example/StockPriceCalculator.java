@@ -12,7 +12,9 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-
+/*
+Sample data file: https://github.com/abulbasar/data/blob/master/stocks.small.csv
+*/
 public class StockPriceCalculator {
 
 
