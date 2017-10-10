@@ -26,7 +26,7 @@ public class StockPriceCalculator {
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
       String[] tokens = value.toString().split(",");
-      if(!value.toString().startsWith("date")){
+      if(tokens.length > 0  && !value.toString().startsWith("date")){
 	      volume.set(Double.valueOf(tokens[5]));
 	      symbol.set(tokens[7]);
 	
