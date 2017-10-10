@@ -17,7 +17,6 @@ Sample data file: https://github.com/abulbasar/data/blob/master/stocks.small.csv
 */
 public class StockPriceCalculator {
 
-
   public static class TokenizerMapper
        extends Mapper<Object, Text, Text, DoubleWritable>{
 
@@ -27,11 +26,15 @@ public class StockPriceCalculator {
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
       String[] tokens = value.toString().split(",");
-      volume.set(Double.valueOf(tokens[5]));
-      symbol.set(tokens[7]);
-      context.write(symbol, volume);
+      if(!value.toString().startsWith("date")){
+	      volume.set(Double.valueOf(tokens[5]));
+	      symbol.set(tokens[7]);
+	
+	      context.write(symbol, volume);
+      }
     }
   }
+
 
   public static class AvgReducer
        extends Reducer<Text,DoubleWritable,Text,DoubleWritable> {
