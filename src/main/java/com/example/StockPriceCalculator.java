@@ -14,7 +14,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 /*
 Sample data file: https://github.com/abulbasar/data/blob/master/stocks.small.csv
-Problem statement: find average volume of stock traded per stocks symbol.
+Problem statement: find average volume of trading per stock symbol.
 
 */
 public class StockPriceCalculator {
