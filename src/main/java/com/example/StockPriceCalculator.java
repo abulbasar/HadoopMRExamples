@@ -14,6 +14,8 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 /*
 Sample data file: https://github.com/abulbasar/data/blob/master/stocks.small.csv
+Problem statement: find average volume of stock traded per stocks symbol.
+
 */
 public class StockPriceCalculator {
 
@@ -26,7 +28,7 @@ public class StockPriceCalculator {
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
       String[] tokens = value.toString().split(",");
-      if(tokens.length > 0  && !value.toString().startsWith("date")){
+      if(tokens.length > 0  && value.toString().startsWith("2016")){
 	      volume.set(Double.valueOf(tokens[5]));
 	      symbol.set(tokens[7]);
 	
