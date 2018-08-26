@@ -31,6 +31,7 @@
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
+            <!--Find the target version by running $hadoop version command -->
             <version>2.7.0-mapr-1703</version>
         </dependency>
     </dependencies>
