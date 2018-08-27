@@ -25,7 +25,7 @@ $ hadoop fs -put stocks.small.csv stocks/
 ```
 Run hadoop jar command to execute
 ```
-$ hadoop jar target/HadoopMRExamples-1.0-SNAPSHOT.jar com/example/StockPriceCalculator stocks stocks_avg
+$ hadoop jar target/HadoopMRExamples-1.0-SNAPSHOT.jar com.example.StockPriceCalculator stocks stocks_avg
 ```
 Once the job is finished, check the output in to HDFS
 ```
