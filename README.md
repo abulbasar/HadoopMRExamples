@@ -29,5 +29,5 @@ $ hadoop jar target/HadoopMRExamples-1.0-SNAPSHOT.jar com/example/StockPriceCalc
 ```
 Once the job is finished, check the output in to HDFS
 ```
-$ hadoop fs -ls stocks_avg/
+$ hadoop fs -cat stocks_avg/*
 ```
