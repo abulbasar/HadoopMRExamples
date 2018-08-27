@@ -1,6 +1,8 @@
 # HadoopMRExamples
-Example of Hadoop Word Count.
-
+Example of Hadoop Map Reduce program to find in year 2016 what is average volume per stock. Following is the SQL equivalent if the data stored in a database table. 
+```
+Select symbol, avg(volume) from stocks where year(date) = 2016 group by symbol 
+```
 More more instructions on how to build a maven project for Hadoop Map Reduce, look at the following article.
 https://blog.einext.com/hadoop/creating-a-hadoop-mr-project-using-maven
 
