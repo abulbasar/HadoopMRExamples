@@ -10,9 +10,9 @@
     <repositories>
         <repository>
             <id>hadoop-releases</id>
-            <url>http://repository.mapr.com/nexus/content/groups/mapr-public</url>
+            <!--url>http://repository.mapr.com/nexus/content/groups/mapr-public</url-->
             <!--url>https://repository.cloudera.com/artifactory/cloudera-repos</url-->
-            <!--url>http://repo.hortonworks.com/content/repositories/releases</url-->
+            <url>http://repo.hortonworks.com/content/repositories/releases</url>
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -32,7 +32,8 @@
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
             <!--Find the target version by running $hadoop version command -->
-            <version>2.7.0-mapr-1703</version>
+            <!--version>2.7.0-mapr-1703</version>-->
+            <version>2.7.7</version>
         </dependency>
     </dependencies>
 </project>
