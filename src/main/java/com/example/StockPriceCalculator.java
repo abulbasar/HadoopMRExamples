@@ -76,13 +76,13 @@ public class StockPriceCalculator {
         /*
         * Delete the output directory if it exists.
         */
-        Configuration conf = new Configuration();
+        final Configuration conf = new Configuration();
         final FileSystem fileSystem = inputPath.getFileSystem(conf);
         if(fileSystem.exists(outputPath)){
           fileSystem.delete(outputPath, true);
         }
+        final Job job = Job.getInstance(conf, "Stock price calculator");
 
-        Job job = Job.getInstance(conf, "Stock price calculator");
         job.setJarByClass(StockPriceCalculator.class);
         job.setMapperClass(TokenizerMapper.class);
         job.setReducerClass(AvgReducer.class);
