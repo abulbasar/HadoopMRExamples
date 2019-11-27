@@ -6,9 +6,6 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.io.compress.BZip2Codec;
-import org.apache.hadoop.io.compress.GzipCodec;
-import org.apache.hadoop.io.compress.SnappyCodec;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -91,6 +88,7 @@ public class StockPriceCalculatorV1 extends Configured implements Tool {
         if (fileSystem.exists(outputPath)) {
             fileSystem.delete(outputPath, true);
         }
+        //conf.set("hadoop.tmp.dir", "/tmp/hadoop");
         final Job job = Job.getInstance(conf, "Stock price calculator");
 
         job.setJarByClass(StockPriceCalculatorV1.class);
