@@ -6,6 +6,9 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
+import org.apache.hadoop.io.compress.BZip2Codec;
+import org.apache.hadoop.io.compress.GzipCodec;
+import org.apache.hadoop.io.compress.SnappyCodec;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -99,7 +102,7 @@ public class StockPriceCalculatorV1 extends Configured implements Tool {
         FileOutputFormat.setOutputPath(job, outputPath);
 
         //FileOutputFormat.setCompressOutput(job,true);
-        //FileOutputFormat.setOutputCompressorClass(job, SnappyCodec.class);
+        //FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);
 
         return job.waitForCompletion(true) ? 0 : 1;
     }
