@@ -142,6 +142,7 @@ public class AverageMovieRating extends Configured implements Tool {
 
         MultipleInputs.addInputPath(job, inputPath1, TextInputFormat.class, MovieMapper.class);
         MultipleInputs.addInputPath(job, inputPath2, TextInputFormat.class, RatingMapper.class);
+
         FileOutputFormat.setOutputPath(job, outputPath);
 
 

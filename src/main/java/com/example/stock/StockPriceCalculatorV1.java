@@ -6,7 +6,6 @@ import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.io.compress.SnappyCodec;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -34,8 +33,6 @@ $ hadoop jar HadoopMRExamples-1.0-SNAPSHOT.jar com.example.stock.StockPriceCalcu
 
 */
 public class StockPriceCalculatorV1 extends Configured implements Tool {
-
-
 
     public static class StockMapper
             extends Mapper<Object, Text, Text, DoubleWritable> {
