@@ -10,23 +10,28 @@ Select symbol, avg(volume) from stocks where year(date) = 2016 group by symbol
 
 com.example.stock.StockPriceCalculatorV2
 ```
-Select symbol, year, avg(volume), max(open), min(open)  from stocks where year(date) = 2016 group by symbol, year(date);
+Select symbol, year, avg(volume), max(open), min(open)  from stocks 
+where year(date) = 2016 group by symbol, year(date);
 ```
 
 com.example.stock.StockPriceCalculatorV3
 ```
-Select symbol, avg(volume) from stocks where year(date) = 2016 group by symbol order by avg(volume) asc;
+Select symbol, avg(volume) from stocks where year(date) = 2016 
+group by symbol order by avg(volume) asc;
 ```
 
 
 com.example.stock.StockPriceCalculatorV3
 ```
-Select symbol, avg(volume) from stocks where year(date) = 2016 group by symbol order by avg(volume) asc;
+Select symbol, avg(volume) from stocks where year(date) = 2016 
+group by symbol order by avg(volume) asc;
 ```
 
 com.example.movielens.AverageMovieRating
 ```
-Select movieId, title, avg(rating), count(*) from movies join ratings on movies.movieId = ratings.movieId group by movies.movieId, movies.title;
+Select movieId, title, avg(rating), count(*) from movies 
+join ratings on movies.movieId = ratings.movieId 
+group by movies.movieId, movies.title;
 ```
 
 
