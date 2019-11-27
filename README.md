@@ -7,10 +7,6 @@ com.example.stock.StockPriceCalculatorV1
 Select symbol, avg(volume) from stocks where year(date) = 2016 group by symbol 
 ```
 
-com.example.stock.StockPriceCalculatorV1
-```
-Select symbol, avg(volume) from stocks where year(date) = 2016 group by symbol 
-```
 
 com.example.stock.StockPriceCalculatorV2
 ```
