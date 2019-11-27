@@ -1,6 +1,5 @@
 package com.example.movielens;
 
-import com.google.common.base.Splitter;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
 import org.apache.hadoop.conf.Configuration;
@@ -14,11 +13,9 @@ import org.apache.hadoop.mapreduce.InputSplit;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
-import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 import org.apache.hadoop.mapreduce.lib.input.MultipleInputs;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -28,7 +25,13 @@ import java.io.IOException;
 
 Problem statement: find average per movie id. Project movieId, title, rating count and avg rating.
 
-Input files: movies.csv, ratings.csv
+Input files:
+
+file: movies.csv
+https://raw.githubusercontent.com/abulbasar/data/master/movielens/movies.csv
+
+file: ratings.csv
+https://raw.githubusercontent.com/abulbasar/data/master/movielens/ratings.csv
 
 */
 public class AverageMovieRating extends Configured implements Tool {
