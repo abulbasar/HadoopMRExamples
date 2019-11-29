@@ -136,7 +136,7 @@ public class AverageMovieRating extends Configured implements Tool {
         if (fileSystem.exists(outputPath)) {
             fileSystem.delete(outputPath, true);
         }
-        final Job job = Job.getInstance(conf, "Movie ratings calculator");
+        final Job job = Job.getInstance(conf, getClass().getName());
 
         job.setJarByClass(AverageMovieRating.class);
         job.setReducerClass(JoinReducer.class);

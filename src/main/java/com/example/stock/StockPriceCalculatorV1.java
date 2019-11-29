@@ -28,7 +28,8 @@ $ sudo -u hdfs hadoop fs -chmod 777 /data
 $ wget https://raw.githubusercontent.com/abulbasar/data/master/stocks.small.csv
 $ sudo -u hdfs hadoop fs -mkdir /data/stocks
 $ hadoop fs -put stocks.small.csv /data/stocks
-$ hadoop jar HadoopMRExamples-1.0-SNAPSHOT.jar com.example.stock.StockPriceCalculatorV1 /data/stocks.small.csv /data/output
+$ hadoop jar HadoopMRExamples-1.0-SNAPSHOT.jar \
+com.example.stock.StockPriceCalculatorV1 /data/stocks/ /data/output
 
 
 */
@@ -84,12 +85,18 @@ public class StockPriceCalculatorV1 extends Configured implements Tool {
          * Delete the output directory if it exists.
          */
         final Configuration conf = new Configuration();
-        final FileSystem fileSystem = inputPath.getFileSystem(conf);
+        final FileSystem fileSystem = FileSystem.get(conf);
         if (fileSystem.exists(outputPath)) {
             fileSystem.delete(outputPath, true);
         }
+
         //conf.set("hadoop.tmp.dir", "/tmp/hadoop");
-        final Job job = Job.getInstance(conf, "Stock price calculator");
+
+
+        // Specify record delimiter. Default record delimiter = \n
+        //conf.set("textinputformat.record.delimiter",",");
+
+        final Job job = Job.getInstance(conf, getClass().getName());
 
         job.setJarByClass(StockPriceCalculatorV1.class);
         job.setMapperClass(StockMapper.class);
@@ -99,10 +106,23 @@ public class StockPriceCalculatorV1 extends Configured implements Tool {
         FileInputFormat.addInputPath(job, inputPath);
         FileOutputFormat.setOutputPath(job, outputPath);
 
+        /*
+
+        Compress output files of map reduce job and specify the codecs.
+
+        */
         //FileOutputFormat.setCompressOutput(job,true);
         //FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);
 
-        return job.waitForCompletion(true) ? 0 : 1;
+        job.setSpeculativeExecution(false);
+
+        int success = job.waitForCompletion(true) ? 0 : 1;
+
+        // Copy the file from HDFS to local file system
+        Path resultsFile = new Path(outputPath + "/part-r-00000");
+        fileSystem.copyToLocalFile(resultsFile, new Path("/tmp/stats.txt"));
+
+        return success;
     }
 
     public static void main(String[] args) throws Exception {

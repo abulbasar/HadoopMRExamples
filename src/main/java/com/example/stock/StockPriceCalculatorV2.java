@@ -145,7 +145,7 @@ public class StockPriceCalculatorV2 extends Configured implements Tool{
         */
 
 
-        final Job job = Job.getInstance(conf, "Stock price calculator");
+        final Job job = Job.getInstance(conf, getClass().getName());
 
         job.setJarByClass(StockPriceCalculatorV2.class);
 
