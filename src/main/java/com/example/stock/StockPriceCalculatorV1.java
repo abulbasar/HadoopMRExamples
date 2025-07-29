@@ -18,7 +18,7 @@ import java.io.IOException;
 
 /*
 
-Problem statement: find average volume of trading per stock symbol.
+Problem statement: find average volume of trading per stock symbol in 2016.
 
 Build jar
 $ mvn package
@@ -33,6 +33,7 @@ com.example.stock.StockPriceCalculatorV1 /data/stocks/ /data/output
 
 
 */
+
 public class StockPriceCalculatorV1 extends Configured implements Tool {
 
     public static class StockMapper
@@ -67,6 +68,9 @@ public class StockPriceCalculatorV1 extends Configured implements Tool {
                 sum += val.get();
                 ++count;
             }
+            /*if("BAC".equals(key.toString())){
+                throw new RuntimeException("Invalid key has been found: BAC");
+            }*/
             result.set(sum / count);
             context.write(key, result);
         }
